@@ -14,16 +14,16 @@ export default function AddTransaction() {
       <div className="flex items-center gap-3.5 mb-6 px-1">
         <button
           onClick={() => navigate(-1)}
-          className="w-10 h-10 rounded-2xl bg-surface-800/80 border border-surface-700/50 
-                     flex items-center justify-center text-surface-300 hover:text-white hover:bg-surface-700/80 
-                     transition-colors shadow-sm"
+          className="w-10 h-10 rounded-xl bg-white dark:bg-surface-800 border-2 border-black shadow-brutal-sm 
+                     flex items-center justify-center text-black dark:text-white 
+                     transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none hover:bg-emerald-400 hover:text-black"
           title="Kembali"
         >
-          <FontAwesomeIcon icon={faArrowLeft} className="text-sm" />
+          <FontAwesomeIcon icon={faArrowLeft} className="text-sm font-black" />
         </button>
         <div>
-          <h1 className="text-base font-extrabold text-surface-50 tracking-tight">Catat Transaksi Baru</h1>
-          <p className="text-[11px] text-surface-400 font-medium">Input pemasukan atau pengeluaran harian</p>
+          <h1 className="text-lg font-black uppercase text-slate-900 dark:text-white tracking-tight">Catat Transaksi</h1>
+          <p className="text-[11px] text-slate-500 dark:text-surface-400 font-bold">Input pemasukan atau pengeluaran baru</p>
         </div>
       </div>
 

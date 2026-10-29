@@ -7,7 +7,7 @@ export default function BottomNav() {
     <nav
       id="bottom-nav"
       className="fixed bottom-0 left-0 right-0 z-50 
-                 bg-surface-950/85 backdrop-blur-2xl border-t border-surface-800/80 shadow-2xl"
+                 bg-white dark:bg-[#131B2E] border-t-2 border-black dark:border-surface-700 transition-colors duration-200"
     >
       <div className="max-w-lg mx-auto flex items-center justify-around px-4 py-2 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
         {/* Dashboard */}
@@ -15,19 +15,16 @@ export default function BottomNav() {
           to="/"
           end
           className={({ isActive }) =>
-            `flex flex-col items-center gap-1 py-1 px-4 rounded-2xl transition-all duration-200
-             ${isActive ? 'text-emerald-400 font-bold' : 'text-surface-400 hover:text-surface-200 font-medium'}`
+            `flex flex-col items-center gap-1 py-1.5 px-4 rounded-xl transition-all duration-150
+             ${isActive 
+               ? 'text-emerald-600 dark:text-emerald-400 font-black scale-105' 
+               : 'text-slate-500 dark:text-surface-400 hover:text-black dark:hover:text-surface-200 font-bold'}`
           }
         >
           {({ isActive }) => (
             <>
-              <div className="relative">
-                <FontAwesomeIcon icon={faHouse} className="text-lg" />
-                {isActive && (
-                  <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-emerald-400 rounded-full shadow-sm shadow-emerald-400/50" />
-                )}
-              </div>
-              <span className="text-[10px] tracking-tight">Dashboard</span>
+              <FontAwesomeIcon icon={faHouse} className={`text-xl ${isActive ? 'text-emerald-500' : ''}`} />
+              <span className="text-[11px] tracking-tight">Dashboard</span>
             </>
           )}
         </NavLink>
@@ -36,20 +33,20 @@ export default function BottomNav() {
         <NavLink
           to="/add"
           className={({ isActive }) =>
-            `flex flex-col items-center gap-1 group -mt-5 transition-transform duration-200 active:scale-95`
+            `flex flex-col items-center gap-1 group -mt-5 transition-transform duration-150 active:scale-95`
           }
         >
           {({ isActive }) => (
             <>
               <div
-                className={`w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-xl transition-all duration-300
+                className={`w-12 h-12 rounded-xl flex items-center justify-center text-black border-2 border-black shadow-brutal transition-all duration-150
                   ${isActive 
-                    ? 'bg-gradient-to-tr from-emerald-500 to-teal-400 shadow-emerald-500/40 ring-4 ring-surface-950 scale-105' 
-                    : 'bg-gradient-to-tr from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-teal-400 shadow-emerald-600/30 ring-4 ring-surface-950'}`}
+                    ? 'bg-emerald-300 translate-x-[1px] translate-y-[1px] shadow-brutal-sm' 
+                    : 'bg-emerald-400 hover:bg-emerald-300'}`}
               >
-                <FontAwesomeIcon icon={faPlus} className="text-base" />
+                <FontAwesomeIcon icon={faPlus} className="text-lg font-black" />
               </div>
-              <span className={`text-[10px] tracking-tight ${isActive ? 'text-emerald-400 font-bold' : 'text-surface-400 font-medium'}`}>
+              <span className={`text-[10px] tracking-tight font-extrabold ${isActive ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-600 dark:text-surface-400'}`}>
                 Catat
               </span>
             </>
@@ -60,19 +57,16 @@ export default function BottomNav() {
         <NavLink
           to="/history"
           className={({ isActive }) =>
-            `flex flex-col items-center gap-1 py-1 px-4 rounded-2xl transition-all duration-200
-             ${isActive ? 'text-emerald-400 font-bold' : 'text-surface-400 hover:text-surface-200 font-medium'}`
+            `flex flex-col items-center gap-1 py-1.5 px-4 rounded-xl transition-all duration-150
+             ${isActive 
+               ? 'text-emerald-600 dark:text-emerald-400 font-black scale-105' 
+               : 'text-slate-500 dark:text-surface-400 hover:text-black dark:hover:text-surface-200 font-bold'}`
           }
         >
           {({ isActive }) => (
             <>
-              <div className="relative">
-                <FontAwesomeIcon icon={faClockRotateLeft} className="text-lg" />
-                {isActive && (
-                  <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-emerald-400 rounded-full shadow-sm shadow-emerald-400/50" />
-                )}
-              </div>
-              <span className="text-[10px] tracking-tight">Riwayat</span>
+              <FontAwesomeIcon icon={faClockRotateLeft} className={`text-xl ${isActive ? 'text-emerald-500' : ''}`} />
+              <span className="text-[11px] tracking-tight">Riwayat</span>
             </>
           )}
         </NavLink>

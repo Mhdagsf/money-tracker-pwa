@@ -7,6 +7,7 @@ import {
   faCalendarDays,
   faNoteSticky,
   faCheck,
+  faArrowRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { getTodayISO, incomeCategories, expenseCategories } from '../../utils/formatters';
 
@@ -60,52 +61,52 @@ export default function TransactionForm({ onSubmit }) {
   if (showSuccess) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] animate-scale-in">
-        <div className="w-20 h-20 rounded-3xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center mb-4 shadow-lg shadow-emerald-500/10">
-          <FontAwesomeIcon icon={faCheck} className="text-3xl text-emerald-400" />
+        <div className="w-20 h-20 rounded-2xl bg-emerald-400 border-2 border-black shadow-brutal flex items-center justify-center mb-4">
+          <FontAwesomeIcon icon={faCheck} className="text-3xl text-black" />
         </div>
-        <p className="text-lg font-bold text-surface-50">Berhasil Disimpan!</p>
-        <p className="text-sm text-surface-400 mt-1">Transaksi telah berhasil dicatat</p>
+        <p className="text-lg font-black uppercase text-slate-900 dark:text-white">Berhasil Disimpan!</p>
+        <p className="text-xs font-bold text-slate-500 dark:text-surface-400 mt-1">Transaksi telah berhasil dicatat</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5 animate-fade-in">
-      {/* Type Toggle */}
-      <div className="glass-card p-1.5 flex gap-2 border border-surface-700/50 bg-surface-900/60">
+    <form onSubmit={handleSubmit} className="space-y-4 animate-fade-in">
+      {/* Type Toggle - Neo-Brutalist */}
+      <div className="grid grid-cols-2 gap-3">
         <button
           type="button"
           onClick={() => { setType('expense'); setCategory(''); }}
-          className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold transition-all duration-300
+          className={`flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-xs font-black uppercase tracking-wider border-2 border-black transition-all duration-150
             ${type === 'expense'
-              ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30 shadow-lg shadow-rose-500/10'
-              : 'text-surface-400 hover:text-surface-200 border border-transparent'
+              ? 'bg-rose-400 text-black shadow-brutal translate-x-[-1px] translate-y-[-1px]'
+              : 'bg-white dark:bg-surface-800 text-slate-500 dark:text-surface-400 shadow-brutal-sm hover:text-black dark:hover:text-white'
             }`}
         >
-          <FontAwesomeIcon icon={faArrowTrendDown} className="text-sm" />
-          Pengeluaran
+          <FontAwesomeIcon icon={faArrowTrendDown} />
+          <span>Pengeluaran</span>
         </button>
         <button
           type="button"
           onClick={() => { setType('income'); setCategory(''); }}
-          className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold transition-all duration-300
+          className={`flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-xs font-black uppercase tracking-wider border-2 border-black transition-all duration-150
             ${type === 'income'
-              ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shadow-lg shadow-emerald-500/10'
-              : 'text-surface-400 hover:text-surface-200 border border-transparent'
+              ? 'bg-emerald-400 text-black shadow-brutal translate-x-[-1px] translate-y-[-1px]'
+              : 'bg-white dark:bg-surface-800 text-slate-500 dark:text-surface-400 shadow-brutal-sm hover:text-black dark:hover:text-white'
             }`}
         >
-          <FontAwesomeIcon icon={faArrowTrendUp} className="text-sm" />
-          Pemasukan
+          <FontAwesomeIcon icon={faArrowTrendUp} />
+          <span>Pemasukan</span>
         </button>
       </div>
 
       {/* Amount Input */}
       <div>
-        <label className="block text-[11px] font-semibold text-surface-400 mb-2 uppercase tracking-wider">
-          Jumlah Nominal
+        <label className="block text-[11px] font-black text-slate-900 dark:text-white mb-1.5 uppercase tracking-wider">
+          Jumlah Nominal (Rp)
         </label>
         <div className="relative">
-          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-surface-400 font-bold text-lg">
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-900 dark:text-white font-black text-base">
             Rp
           </span>
           <input
@@ -115,7 +116,7 @@ export default function TransactionForm({ onSubmit }) {
             placeholder="0"
             value={formattedAmount}
             onChange={handleAmountChange}
-            className="input-field pl-14 text-2xl font-bold tracking-tight"
+            className="input-field pl-12 text-xl font-black"
             required
           />
         </div>
@@ -123,11 +124,11 @@ export default function TransactionForm({ onSubmit }) {
 
       {/* Category Selection */}
       <div>
-        <div className="flex items-center justify-between mb-2">
-          <label className="block text-[11px] font-semibold text-surface-400 uppercase tracking-wider">
+        <div className="flex items-center justify-between mb-1.5">
+          <label className="block text-[11px] font-black text-slate-900 dark:text-white uppercase tracking-wider">
             Pilih Kategori
           </label>
-          <span className="text-[10px] text-surface-500">Wajib dipilih</span>
+          <span className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase">*Wajib</span>
         </div>
         <div className="grid grid-cols-4 gap-2">
           {categories.map((cat) => (
@@ -135,21 +136,19 @@ export default function TransactionForm({ onSubmit }) {
               key={cat.id}
               type="button"
               onClick={() => setCategory(cat.id)}
-              className={`flex flex-col items-center justify-center gap-2 py-3.5 px-2 rounded-2xl text-xs font-semibold transition-all duration-200 border
+              className={`flex flex-col items-center justify-center gap-1.5 py-3 px-1.5 rounded-xl text-xs font-black uppercase transition-all duration-150 border-2 border-black
                 ${category === cat.id
                   ? type === 'income'
-                    ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/50 shadow-md shadow-emerald-500/10 scale-[1.02]'
-                    : 'bg-rose-500/20 text-rose-300 border-rose-500/50 shadow-md shadow-rose-500/10 scale-[1.02]'
-                  : 'bg-surface-900/60 text-surface-400 border-surface-800/80 hover:bg-surface-800/70 hover:text-surface-200'
+                    ? 'bg-emerald-400 text-black shadow-brutal translate-x-[-1px] translate-y-[-1px]'
+                    : 'bg-rose-400 text-black shadow-brutal translate-x-[-1px] translate-y-[-1px]'
+                  : 'bg-white dark:bg-[#1E293B] text-slate-700 dark:text-surface-300 shadow-brutal-sm hover:bg-slate-100 dark:hover:bg-surface-700 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none'
                 }`}
             >
-              <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-sm
-                ${category === cat.id 
-                  ? (type === 'income' ? 'bg-emerald-500/30 text-emerald-300' : 'bg-rose-500/30 text-rose-300') 
-                  : 'bg-surface-800/80 text-surface-400'}`}>
+              <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs border border-black
+                ${category === cat.id ? 'bg-black text-white' : 'bg-slate-100 dark:bg-surface-800 text-black dark:text-white'}`}>
                 <FontAwesomeIcon icon={cat.icon} />
               </div>
-              <span className="truncate w-full text-center text-[11px]">{cat.label}</span>
+              <span className="truncate w-full text-center text-[10px] tracking-tight">{cat.label}</span>
             </button>
           ))}
         </div>
@@ -166,9 +165,9 @@ export default function TransactionForm({ onSubmit }) {
 
       {/* Date */}
       <div>
-        <label className="block text-[11px] font-semibold text-surface-400 mb-2 uppercase tracking-wider flex items-center gap-1.5">
-          <FontAwesomeIcon icon={faCalendarDays} className="text-surface-500" />
-          Tanggal
+        <label className="block text-[11px] font-black text-slate-900 dark:text-white mb-1.5 uppercase tracking-wider flex items-center gap-1.5">
+          <FontAwesomeIcon icon={faCalendarDays} />
+          Tanggal Transaksi
         </label>
         <input
           id="input-date"
@@ -182,9 +181,9 @@ export default function TransactionForm({ onSubmit }) {
 
       {/* Note */}
       <div>
-        <label className="block text-[11px] font-semibold text-surface-400 mb-2 uppercase tracking-wider flex items-center gap-1.5">
-          <FontAwesomeIcon icon={faNoteSticky} className="text-surface-500" />
-          Catatan (Opsional)
+        <label className="block text-[11px] font-black text-slate-900 dark:text-white mb-1.5 uppercase tracking-wider flex items-center gap-1.5">
+          <FontAwesomeIcon icon={faNoteSticky} />
+          Catatan / Keterangan
         </label>
         <input
           id="input-note"
@@ -197,20 +196,22 @@ export default function TransactionForm({ onSubmit }) {
         />
       </div>
 
-      {/* Submit Button */}
+      {/* Signature Neo-Brutalist Submit Button with Arrow Block */}
       <button
         id="btn-submit"
         type="submit"
         disabled={isSubmitting || !amount || !category}
-        className={`w-full py-4 rounded-2xl font-bold text-white text-sm transition-all duration-300 mt-2
+        className={`w-full flex items-center justify-between p-2 pl-5 rounded-xl border-2 border-black font-black text-sm uppercase tracking-wider transition-all duration-150 mt-4
           ${isSubmitting || !amount || !category
-            ? 'bg-surface-800 text-surface-500 border border-surface-700/40 cursor-not-allowed opacity-60'
-            : type === 'income'
-              ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:brightness-110 active:scale-[0.98] shadow-lg shadow-emerald-500/25 border border-emerald-400/30'
-              : 'bg-gradient-to-r from-rose-600 via-rose-500 to-amber-600 hover:brightness-110 active:scale-[0.98] shadow-lg shadow-rose-500/25 border border-rose-400/30'
+            ? 'bg-slate-200 dark:bg-surface-800 text-slate-400 dark:text-surface-600 border-dashed cursor-not-allowed'
+            : 'bg-emerald-400 hover:bg-emerald-300 text-black shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none'
           }`}
       >
-        {isSubmitting ? 'Menyimpan Transaksi...' : 'Simpan Transaksi'}
+        <span>{isSubmitting ? 'Menyimpan...' : 'Simpan Transaksi'}</span>
+        <div className={`w-10 h-10 rounded-lg flex items-center justify-center border-2 border-black
+          ${isSubmitting || !amount || !category ? 'bg-slate-300 dark:bg-surface-700 text-slate-500' : 'bg-black text-white'}`}>
+          <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
+        </div>
       </button>
     </form>
   );

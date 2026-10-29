@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClockRotateLeft, faWallet, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { faClockRotateLeft, faWallet, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import TransactionItem from '../transaction/TransactionItem';
 
 export default function RecentList({ transactions, onDelete }) {
@@ -8,20 +8,22 @@ export default function RecentList({ transactions, onDelete }) {
 
   if (transactions.length === 0) {
     return (
-      <div className="glass-card p-5 rounded-3xl border border-surface-700/40 bg-surface-900/60 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+      <div className="bg-white dark:bg-[#131B2E] p-5 rounded-2xl border-2 border-black dark:border-surface-700 shadow-brutal animate-slide-up" style={{ animationDelay: '0.15s' }}>
         <div className="flex items-center gap-2 mb-4">
-          <div className="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+          <div className="w-8 h-8 rounded-lg bg-emerald-400 border-2 border-black shadow-brutal-sm flex items-center justify-center text-black">
             <FontAwesomeIcon icon={faClockRotateLeft} className="text-xs" />
           </div>
-          <h3 className="text-sm font-bold text-surface-200">Transaksi Terakhir</h3>
+          <h3 className="text-sm font-black uppercase tracking-wider text-slate-900 dark:text-white">
+            Transaksi Terakhir
+          </h3>
         </div>
-        <div className="flex flex-col items-center justify-center py-10 text-center">
-          <div className="w-14 h-14 rounded-2xl bg-surface-800/80 border border-surface-700/50 flex items-center justify-center text-emerald-400/70 mb-3 shadow-inner">
-            <FontAwesomeIcon icon={faWallet} className="text-xl" />
+        <div className="flex flex-col items-center justify-center py-8 text-center bg-slate-50 dark:bg-surface-800/50 rounded-xl border-2 border-dashed border-slate-300 dark:border-surface-700">
+          <div className="w-12 h-12 rounded-xl bg-white dark:bg-surface-800 border-2 border-black shadow-brutal-sm flex items-center justify-center text-emerald-500 mb-3">
+            <FontAwesomeIcon icon={faWallet} className="text-lg" />
           </div>
-          <p className="text-surface-200 text-sm font-semibold">Belum Ada Transaksi</p>
-          <p className="text-surface-500 text-xs mt-1 max-w-[200px]">
-            Ketuk tombol tambah untuk mencatat pengeluaran atau pemasukan pertama Anda
+          <p className="text-slate-900 dark:text-white text-sm font-black uppercase">Belum Ada Transaksi</p>
+          <p className="text-slate-500 dark:text-surface-400 text-xs mt-1 font-bold max-w-[220px]">
+            Ketuk tombol tambah (+) di bawah untuk mencatat transaksi pertamamu
           </p>
         </div>
       </div>
@@ -29,24 +31,26 @@ export default function RecentList({ transactions, onDelete }) {
   }
 
   return (
-    <div className="glass-card p-4 rounded-3xl border border-surface-700/40 bg-surface-900/60 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+    <div className="bg-white dark:bg-[#131B2E] p-4 rounded-2xl border-2 border-black dark:border-surface-700 shadow-brutal animate-slide-up" style={{ animationDelay: '0.15s' }}>
       <div className="flex items-center justify-between mb-3 px-1">
         <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+          <div className="w-8 h-8 rounded-lg bg-emerald-400 border-2 border-black shadow-brutal-sm flex items-center justify-center text-black">
             <FontAwesomeIcon icon={faClockRotateLeft} className="text-xs" />
           </div>
-          <h3 className="text-sm font-bold text-surface-200">Transaksi Terakhir</h3>
+          <h3 className="text-sm font-black uppercase tracking-wider text-slate-900 dark:text-white">
+            Transaksi Terakhir
+          </h3>
         </div>
         <button
           onClick={() => navigate('/history')}
-          className="flex items-center gap-1.5 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors px-2 py-1 rounded-lg hover:bg-emerald-500/10"
+          className="flex items-center gap-2 text-xs font-black uppercase tracking-wider bg-white dark:bg-surface-800 text-slate-900 dark:text-white border-2 border-black dark:border-surface-600 px-3 py-1.5 rounded-lg shadow-brutal-sm transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none hover:bg-emerald-400 hover:text-black"
         >
-          <span>Lihat Semua</span>
-          <FontAwesomeIcon icon={faAngleRight} className="text-[10px]" />
+          <span>Semua</span>
+          <FontAwesomeIcon icon={faArrowRight} className="text-[10px]" />
         </button>
       </div>
 
-      <div className="space-y-1">
+      <div className="space-y-2">
         {transactions.map((transaction) => (
           <TransactionItem
             key={transaction.id}

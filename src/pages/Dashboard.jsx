@@ -1,19 +1,21 @@
 import { useTransactions } from '../hooks/useTransactions';
+import { useTheme } from '../context/ThemeContext';
 import BalanceCard from '../components/dashboard/BalanceCard';
 import ChartSection from '../components/dashboard/ChartSection';
 import RecentList from '../components/dashboard/RecentList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWallet } from '@fortawesome/free-solid-svg-icons';
+import { faSun, faMoon, faWallet } from '@fortawesome/free-solid-svg-icons';
 
 export default function Dashboard() {
   const { summary, chartData, recentTransactions, deleteTransaction, isLoading } = useTransactions();
+  const { theme, toggleTheme } = useTheme();
 
   if (isLoading) {
     return (
       <div className="page-container flex items-center justify-center min-h-[60vh]">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-9 h-9 border-2 border-emerald-500/20 border-t-emerald-400 rounded-full animate-spin" />
-          <p className="text-surface-400 text-xs font-semibold">Memuat data keuangan...</p>
+          <div className="w-10 h-10 border-4 border-black border-t-emerald-400 rounded-full animate-spin" />
+          <p className="text-slate-600 dark:text-surface-400 text-xs font-black uppercase tracking-wider">Memuat Data...</p>
         </div>
       </div>
     );
@@ -21,21 +23,33 @@ export default function Dashboard() {
 
   return (
     <div className="page-container">
-      {/* Header */}
+      {/* Header Neo-Brutalism */}
       <div className="flex items-center justify-between mb-5 px-1">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center text-white shadow-lg shadow-emerald-500/20 border border-emerald-400/30">
-            <FontAwesomeIcon icon={faWallet} className="text-sm" />
+          <div className="w-11 h-11 rounded-xl bg-emerald-400 border-2 border-black shadow-brutal-sm flex items-center justify-center text-black overflow-hidden">
+            <img src="/icons/icon-192x192.png" alt="Keuangan Logo" className="w-8 h-8 rounded-lg object-contain" />
           </div>
           <div>
-            <h1 className="text-base font-extrabold text-surface-50 tracking-tight">Keuangan</h1>
-            <p className="text-[11px] text-surface-400 font-medium">Catatan finansial pribadi</p>
+            <div className="flex items-center gap-2">
+              <h1 className="text-lg font-black text-slate-900 dark:text-white tracking-tight uppercase">
+                Keuangan
+              </h1>
+              <span className="px-2 py-0.5 rounded-md bg-emerald-400 text-black border-2 border-black text-[9px] font-black uppercase shadow-brutal-sm">
+                Pro
+              </span>
+            </div>
+            <p className="text-[11px] text-slate-600 dark:text-surface-400 font-bold">Pencatatan Keuangan Pribadi</p>
           </div>
         </div>
-        <div className="px-3 py-1 rounded-full bg-surface-800/80 border border-surface-700/50 text-[11px] font-semibold text-emerald-400 flex items-center gap-1.5 shadow-sm">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          <span>Aktif</span>
-        </div>
+
+        {/* Theme Toggle Button (Siang / Malam) */}
+        <button
+          onClick={toggleTheme}
+          className="w-10 h-10 rounded-xl bg-white dark:bg-surface-800 text-slate-900 dark:text-amber-400 border-2 border-black dark:border-surface-600 shadow-brutal-sm flex items-center justify-center transition-all duration-150 active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:bg-slate-100 dark:hover:bg-surface-700"
+          title={theme === 'dark' ? 'Beralih ke Mode Siang' : 'Beralih ke Mode Malam'}
+        >
+          <FontAwesomeIcon icon={theme === 'dark' ? faSun : faMoon} className="text-sm" />
+        </button>
       </div>
 
       {/* Balance Card */}
