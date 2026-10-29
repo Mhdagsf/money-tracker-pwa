@@ -11,7 +11,8 @@ export default defineConfig({
       manifest: {
         name: 'Keuangan - Pencatatan Keuangan',
         short_name: 'Keuangan',
-        description: 'Aplikasi pencatatan keuangan pribadi - catat uang masuk & keluar dengan mudah',
+        description:
+          'Aplikasi pencatatan keuangan pribadi - catat uang masuk & keluar dengan mudah',
         theme_color: '#0F172A',
         background_color: '#0F172A',
         display: 'standalone',
