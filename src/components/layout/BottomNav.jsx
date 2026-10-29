@@ -7,29 +7,36 @@ export default function BottomNav() {
     <div className="fixed bottom-3 left-0 right-0 z-50 px-4 pointer-events-none">
       <nav
         id="bottom-nav"
-        className="max-w-md mx-auto pointer-events-auto bg-white dark:bg-[#131B2E] border-2 border-black dark:border-surface-700 shadow-brutal-lg rounded-2xl px-4 py-2 transition-colors duration-200"
+        className="max-w-md mx-auto pointer-events-auto bg-white dark:bg-[#131B2E] border-2 border-black dark:border-surface-700 shadow-brutal-lg rounded-2xl px-2 py-2.5 transition-colors duration-200"
       >
-        <div className="flex items-end justify-around">
+        <div className="grid grid-cols-3 items-center">
           {/* Dashboard */}
           <NavLink
             to="/"
             end
-            className={({ isActive }) =>
-              `flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all duration-150
-               ${isActive 
-                 ? 'text-emerald-600 dark:text-emerald-400 font-black' 
-                 : 'text-slate-600 dark:text-surface-400 hover:text-black dark:hover:text-white font-bold'}`
-            }
+            className="flex flex-col items-center justify-center group py-0.5 transition-all duration-150"
           >
             {({ isActive }) => (
               <>
-                <FontAwesomeIcon
-                  icon={faHouse}
-                  className={`text-lg mb-1.5 transition-colors ${
-                    isActive ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-600 dark:text-surface-400'
+                <div className="w-11 h-11 flex items-center justify-center mb-1">
+                  <FontAwesomeIcon
+                    icon={faHouse}
+                    className={`text-xl transition-all duration-150 ${
+                      isActive
+                        ? 'text-emerald-600 dark:text-emerald-400 scale-110'
+                        : 'text-slate-500 dark:text-surface-400 group-hover:text-black dark:group-hover:text-white'
+                    }`}
+                  />
+                </div>
+                <span
+                  className={`text-[10px] uppercase tracking-wider transition-colors duration-150 ${
+                    isActive
+                      ? 'text-emerald-600 dark:text-emerald-400 font-black'
+                      : 'text-slate-600 dark:text-surface-400 group-hover:text-black dark:group-hover:text-white font-bold'
                   }`}
-                />
-                <span className="text-[10px] uppercase font-black tracking-wider">Dashboard</span>
+                >
+                  Dashboard
+                </span>
               </>
             )}
           </NavLink>
@@ -38,25 +45,25 @@ export default function BottomNav() {
           <NavLink
             to="/add"
             aria-label="Catat Transaksi"
-            className="flex flex-col items-center justify-center group py-1 px-3 transition-transform duration-150 active:scale-95"
+            className="flex flex-col items-center justify-center group py-0.5 transition-transform duration-150 active:scale-95"
           >
             {({ isActive }) => (
               <>
                 <div
-                  className={`w-11 h-11 rounded-xl flex items-center justify-center text-black border-2 border-black mb-1 transition-all duration-150
-                    ${isActive 
-                      ? 'bg-emerald-300 shadow-brutal-sm translate-x-[1px] translate-y-[1px]' 
-                      : 'bg-emerald-400 hover:bg-emerald-300 shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none'}`
-                  }
+                  className={`w-11 h-11 rounded-xl flex items-center justify-center text-black border-2 border-black mb-1 transition-all duration-150 ${
+                    isActive
+                      ? 'bg-emerald-300 shadow-brutal-sm translate-x-[1px] translate-y-[1px]'
+                      : 'bg-emerald-400 hover:bg-emerald-300 shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none'
+                  }`}
                 >
                   <FontAwesomeIcon icon={faPlus} className="text-xl font-black" />
                 </div>
                 <span
-                  className={`text-[10px] uppercase font-black tracking-wider transition-colors
-                    ${isActive 
-                      ? 'text-emerald-600 dark:text-emerald-400 font-black' 
-                      : 'text-slate-600 dark:text-surface-400 group-hover:text-black dark:group-hover:text-white font-bold'}`
-                  }
+                  className={`text-[10px] uppercase tracking-wider transition-colors duration-150 ${
+                    isActive
+                      ? 'text-emerald-600 dark:text-emerald-400 font-black'
+                      : 'text-slate-600 dark:text-surface-400 group-hover:text-black dark:group-hover:text-white font-bold'
+                  }`}
                 >
                   Catat
                 </span>
@@ -67,22 +74,29 @@ export default function BottomNav() {
           {/* Riwayat */}
           <NavLink
             to="/history"
-            className={({ isActive }) =>
-              `flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all duration-150
-               ${isActive 
-                 ? 'text-emerald-600 dark:text-emerald-400 font-black' 
-                 : 'text-slate-600 dark:text-surface-400 hover:text-black dark:hover:text-white font-bold'}`
-            }
+            className="flex flex-col items-center justify-center group py-0.5 transition-all duration-150"
           >
             {({ isActive }) => (
               <>
-                <FontAwesomeIcon
-                  icon={faClockRotateLeft}
-                  className={`text-lg mb-1.5 transition-colors ${
-                    isActive ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-600 dark:text-surface-400'
+                <div className="w-11 h-11 flex items-center justify-center mb-1">
+                  <FontAwesomeIcon
+                    icon={faClockRotateLeft}
+                    className={`text-xl transition-all duration-150 ${
+                      isActive
+                        ? 'text-emerald-600 dark:text-emerald-400 scale-110'
+                        : 'text-slate-500 dark:text-surface-400 group-hover:text-black dark:group-hover:text-white'
+                    }`}
+                  />
+                </div>
+                <span
+                  className={`text-[10px] uppercase tracking-wider transition-colors duration-150 ${
+                    isActive
+                      ? 'text-emerald-600 dark:text-emerald-400 font-black'
+                      : 'text-slate-600 dark:text-surface-400 group-hover:text-black dark:group-hover:text-white font-bold'
                   }`}
-                />
-                <span className="text-[10px] uppercase font-black tracking-wider">Riwayat</span>
+                >
+                  Riwayat
+                </span>
               </>
             )}
           </NavLink>
