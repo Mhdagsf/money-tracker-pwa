@@ -1,4 +1,5 @@
-import { ArrowLeft } from 'lucide-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import TransactionForm from '../components/transaction/TransactionForm';
 import { useTransactions } from '../hooks/useTransactions';
@@ -10,18 +11,19 @@ export default function AddTransaction() {
   return (
     <div className="page-container">
       {/* Header */}
-      <div className="flex items-center gap-3 mb-6">
+      <div className="flex items-center gap-3.5 mb-6 px-1">
         <button
           onClick={() => navigate(-1)}
-          className="w-9 h-9 rounded-xl bg-surface-800/60 border border-surface-700/40 
-                     flex items-center justify-center text-surface-400 hover:text-surface-200 
-                     transition-colors"
+          className="w-10 h-10 rounded-2xl bg-surface-800/80 border border-surface-700/50 
+                     flex items-center justify-center text-surface-300 hover:text-white hover:bg-surface-700/80 
+                     transition-colors shadow-sm"
+          title="Kembali"
         >
-          <ArrowLeft size={18} />
+          <FontAwesomeIcon icon={faArrowLeft} className="text-sm" />
         </button>
         <div>
-          <h1 className="text-lg font-bold text-surface-50">Tambah Transaksi</h1>
-          <p className="text-xs text-surface-500">Catat uang masuk atau keluar</p>
+          <h1 className="text-base font-extrabold text-surface-50 tracking-tight">Catat Transaksi Baru</h1>
+          <p className="text-[11px] text-surface-400 font-medium">Input pemasukan atau pengeluaran harian</p>
         </div>
       </div>
 

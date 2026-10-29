@@ -1,3 +1,21 @@
+import {
+  faBriefcase,
+  faLaptopCode,
+  faChartLine,
+  faGift,
+  faCoins,
+  faArrowDown,
+  faUtensils,
+  faCar,
+  faBagShopping,
+  faFileInvoiceDollar,
+  faGamepad,
+  faHeartPulse,
+  faGraduationCap,
+  faArrowUp,
+  faTag,
+} from '@fortawesome/free-solid-svg-icons';
+
 /**
  * Format angka ke format Rupiah Indonesia
  * @param {number} amount - Jumlah uang
@@ -79,34 +97,34 @@ export function formatNumber(num) {
  * Daftar kategori pemasukan
  */
 export const incomeCategories = [
-  { id: 'gaji', label: 'Gaji', icon: '💼' },
-  { id: 'freelance', label: 'Freelance', icon: '💻' },
-  { id: 'investasi', label: 'Investasi', icon: '📈' },
-  { id: 'hadiah', label: 'Hadiah', icon: '🎁' },
-  { id: 'bonus', label: 'Bonus', icon: '🎉' },
-  { id: 'lainnya_masuk', label: 'Lainnya', icon: '📥' },
+  { id: 'gaji', label: 'Gaji', icon: faBriefcase },
+  { id: 'freelance', label: 'Freelance', icon: faLaptopCode },
+  { id: 'investasi', label: 'Investasi', icon: faChartLine },
+  { id: 'hadiah', label: 'Hadiah', icon: faGift },
+  { id: 'bonus', label: 'Bonus', icon: faCoins },
+  { id: 'lainnya_masuk', label: 'Lainnya', icon: faArrowDown },
 ];
 
 /**
  * Daftar kategori pengeluaran
  */
 export const expenseCategories = [
-  { id: 'makanan', label: 'Makanan', icon: '🍔' },
-  { id: 'transport', label: 'Transport', icon: '🚗' },
-  { id: 'belanja', label: 'Belanja', icon: '🛒' },
-  { id: 'tagihan', label: 'Tagihan', icon: '📄' },
-  { id: 'hiburan', label: 'Hiburan', icon: '🎮' },
-  { id: 'kesehatan', label: 'Kesehatan', icon: '💊' },
-  { id: 'pendidikan', label: 'Pendidikan', icon: '📚' },
-  { id: 'lainnya_keluar', label: 'Lainnya', icon: '📤' },
+  { id: 'makanan', label: 'Makanan', icon: faUtensils },
+  { id: 'transport', label: 'Transport', icon: faCar },
+  { id: 'belanja', label: 'Belanja', icon: faBagShopping },
+  { id: 'tagihan', label: 'Tagihan', icon: faFileInvoiceDollar },
+  { id: 'hiburan', label: 'Hiburan', icon: faGamepad },
+  { id: 'kesehatan', label: 'Kesehatan', icon: faHeartPulse },
+  { id: 'pendidikan', label: 'Pendidikan', icon: faGraduationCap },
+  { id: 'lainnya_keluar', label: 'Lainnya', icon: faArrowUp },
 ];
 
 /**
  * Mendapatkan info kategori berdasarkan id
  * @param {string} categoryId
- * @returns {{ id: string, label: string, icon: string }}
+ * @returns {{ id: string, label: string, icon: any }}
  */
 export function getCategoryInfo(categoryId) {
   const all = [...incomeCategories, ...expenseCategories];
-  return all.find((c) => c.id === categoryId) || { id: categoryId, label: categoryId, icon: '📌' };
+  return all.find((c) => c.id === categoryId) || { id: categoryId, label: categoryId, icon: faTag };
 }

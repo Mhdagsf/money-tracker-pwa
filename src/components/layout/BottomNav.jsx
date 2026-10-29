@@ -1,42 +1,81 @@
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, PlusCircle, ClockArrowUp } from 'lucide-react';
-
-const navItems = [
-  { to: '/', icon: LayoutDashboard, label: 'Dashboard' },
-  { to: '/add', icon: PlusCircle, label: 'Tambah' },
-  { to: '/history', icon: ClockArrowUp, label: 'Riwayat' },
-];
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouse, faPlus, faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
 
 export default function BottomNav() {
   return (
     <nav
       id="bottom-nav"
       className="fixed bottom-0 left-0 right-0 z-50 
-                 bg-surface-900/80 backdrop-blur-2xl border-t border-surface-700/40"
+                 bg-surface-950/85 backdrop-blur-2xl border-t border-surface-800/80 shadow-2xl"
     >
-      <div className="max-w-lg mx-auto flex items-center justify-around py-1 pb-[max(0.25rem,env(safe-area-inset-bottom))]">
-        {navItems.map(({ to, icon: Icon, label }) => (
-          <NavLink
-            key={to}
-            to={to}
-            end={to === '/'}
-            className={({ isActive }) =>
-              `nav-item ${isActive ? 'nav-item-active' : 'nav-item-inactive'}`
-            }
-          >
-            {({ isActive }) => (
-              <>
-                <div className="relative">
-                  <Icon size={22} strokeWidth={isActive ? 2.5 : 1.8} />
-                  {isActive && (
-                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-emerald-400 rounded-full" />
-                  )}
-                </div>
-                <span className="text-[10px] font-medium">{label}</span>
-              </>
-            )}
-          </NavLink>
-        ))}
+      <div className="max-w-lg mx-auto flex items-center justify-around px-4 py-2 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+        {/* Dashboard */}
+        <NavLink
+          to="/"
+          end
+          className={({ isActive }) =>
+            `flex flex-col items-center gap-1 py-1 px-4 rounded-2xl transition-all duration-200
+             ${isActive ? 'text-emerald-400 font-bold' : 'text-surface-400 hover:text-surface-200 font-medium'}`
+          }
+        >
+          {({ isActive }) => (
+            <>
+              <div className="relative">
+                <FontAwesomeIcon icon={faHouse} className="text-lg" />
+                {isActive && (
+                  <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-emerald-400 rounded-full shadow-sm shadow-emerald-400/50" />
+                )}
+              </div>
+              <span className="text-[10px] tracking-tight">Dashboard</span>
+            </>
+          )}
+        </NavLink>
+
+        {/* Center Tambah Button */}
+        <NavLink
+          to="/add"
+          className={({ isActive }) =>
+            `flex flex-col items-center gap-1 group -mt-5 transition-transform duration-200 active:scale-95`
+          }
+        >
+          {({ isActive }) => (
+            <>
+              <div
+                className={`w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-xl transition-all duration-300
+                  ${isActive 
+                    ? 'bg-gradient-to-tr from-emerald-500 to-teal-400 shadow-emerald-500/40 ring-4 ring-surface-950 scale-105' 
+                    : 'bg-gradient-to-tr from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-teal-400 shadow-emerald-600/30 ring-4 ring-surface-950'}`}
+              >
+                <FontAwesomeIcon icon={faPlus} className="text-base" />
+              </div>
+              <span className={`text-[10px] tracking-tight ${isActive ? 'text-emerald-400 font-bold' : 'text-surface-400 font-medium'}`}>
+                Catat
+              </span>
+            </>
+          )}
+        </NavLink>
+
+        {/* Riwayat */}
+        <NavLink
+          to="/history"
+          className={({ isActive }) =>
+            `flex flex-col items-center gap-1 py-1 px-4 rounded-2xl transition-all duration-200
+             ${isActive ? 'text-emerald-400 font-bold' : 'text-surface-400 hover:text-surface-200 font-medium'}`
+          }
+        >
+          {({ isActive }) => (
+            <>
+              <div className="relative">
+                <FontAwesomeIcon icon={faClockRotateLeft} className="text-lg" />
+                {isActive && (
+                  <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-emerald-400 rounded-full shadow-sm shadow-emerald-400/50" />
+                )}
+              </div>
+              <span className="text-[10px] tracking-tight">Riwayat</span>
+            </>
+          )}
+        </NavLink>
       </div>
     </nav>
   );

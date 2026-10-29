@@ -7,16 +7,18 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChartSimple } from '@fortawesome/free-solid-svg-icons';
 import { formatCurrency } from '../../utils/formatters';
 
 function CustomTooltip({ active, payload, label }) {
   if (!active || !payload || !payload.length) return null;
 
   return (
-    <div className="glass-card-elevated px-3 py-2 text-xs">
-      <p className="text-surface-400 font-medium mb-1">{label}</p>
+    <div className="glass-card-elevated px-3 py-2 text-xs border border-surface-700/60 shadow-xl">
+      <p className="text-surface-400 font-semibold mb-1">{label}</p>
       {payload.map((entry) => (
-        <p key={entry.name} style={{ color: entry.color }} className="font-semibold">
+        <p key={entry.name} style={{ color: entry.color }} className="font-bold">
           {entry.name === 'income' ? 'Masuk' : 'Keluar'}: {formatCurrency(entry.value)}
         </p>
       ))}
@@ -29,27 +31,37 @@ export default function ChartSection({ chartData }) {
 
   if (!hasData) {
     return (
-      <div className="glass-card p-4 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-        <h3 className="text-sm font-semibold text-surface-300 mb-3">📊 Grafik 7 Hari</h3>
-        <div className="flex items-center justify-center h-32 text-surface-500 text-sm">
-          Belum ada data untuk ditampilkan
+      <div className="glass-card p-4 rounded-3xl border border-surface-700/40 bg-surface-900/60 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+            <FontAwesomeIcon icon={faChartSimple} className="text-xs" />
+          </div>
+          <h3 className="text-sm font-bold text-surface-200">Tren 7 Hari Terakhir</h3>
+        </div>
+        <div className="flex items-center justify-center h-28 text-surface-500 text-xs font-medium">
+          Belum ada aktivitas transaksi minggu ini
         </div>
       </div>
     );
   }
 
   return (
-    <div className="glass-card p-4 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+    <div className="glass-card p-4 rounded-3xl border border-surface-700/40 bg-surface-900/60 animate-slide-up" style={{ animationDelay: '0.1s' }}>
       <div className="flex items-center justify-between mb-3">
-        <h3 className="text-sm font-semibold text-surface-300">📊 Grafik 7 Hari</h3>
-        <div className="flex items-center gap-3 text-[10px]">
-          <div className="flex items-center gap-1">
-            <div className="w-2 h-2 rounded-full bg-emerald-400" />
-            <span className="text-surface-400">Masuk</span>
+        <div className="flex items-center gap-2">
+          <div className="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+            <FontAwesomeIcon icon={faChartSimple} className="text-xs" />
           </div>
-          <div className="flex items-center gap-1">
-            <div className="w-2 h-2 rounded-full bg-rose-400" />
-            <span className="text-surface-400">Keluar</span>
+          <h3 className="text-sm font-bold text-surface-200">Tren 7 Hari</h3>
+        </div>
+        <div className="flex items-center gap-3 text-[11px] font-semibold">
+          <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400">
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+            <span>Masuk</span>
+          </div>
+          <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-rose-500/10 text-rose-400">
+            <div className="w-1.5 h-1.5 rounded-full bg-rose-400" />
+            <span>Keluar</span>
           </div>
         </div>
       </div>

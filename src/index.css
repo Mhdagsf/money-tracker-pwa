@@ -29,27 +29,27 @@
 
 @layer components {
   .glass-card {
-    @apply bg-surface-800/60 backdrop-blur-xl border border-surface-700/50 rounded-2xl;
+    @apply bg-surface-900/60 backdrop-blur-2xl border border-surface-800/80 rounded-3xl;
   }
 
   .glass-card-elevated {
-    @apply bg-surface-800/80 backdrop-blur-xl border border-surface-700/40 rounded-2xl shadow-lg shadow-black/20;
+    @apply bg-surface-900/80 backdrop-blur-2xl border border-surface-700/60 rounded-3xl shadow-xl shadow-black/30;
   }
 
   .btn-primary {
     @apply bg-emerald-500 hover:bg-emerald-400 active:scale-[0.98] text-white font-semibold 
-           rounded-xl px-6 py-3 transition-all duration-200 ease-out;
+           rounded-2xl px-6 py-3.5 transition-all duration-200 ease-out shadow-lg shadow-emerald-500/20;
   }
 
   .btn-danger {
     @apply bg-rose-500 hover:bg-rose-400 active:scale-[0.98] text-white font-semibold 
-           rounded-xl px-6 py-3 transition-all duration-200 ease-out;
+           rounded-2xl px-6 py-3.5 transition-all duration-200 ease-out shadow-lg shadow-rose-500/20;
   }
 
   .input-field {
-    @apply w-full bg-surface-900/80 border border-surface-700/60 rounded-xl px-4 py-3 
-           text-surface-50 placeholder-surface-500 
-           focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50
+    @apply w-full bg-surface-900/90 border border-surface-700/60 rounded-2xl px-4 py-3.5 
+           text-surface-50 placeholder-surface-500 text-sm font-medium
+           focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/60
            transition-all duration-200;
   }
 
@@ -74,12 +74,12 @@
   }
 
   .category-chip {
-    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium
-           bg-surface-700/60 text-surface-300;
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold
+           bg-surface-800/80 text-surface-300 border border-surface-700/50;
   }
 
   .page-container {
-    @apply max-w-lg mx-auto px-4 pb-24 pt-4;
+    @apply max-w-lg mx-auto px-4 pb-28 pt-5;
   }
 }
 
